@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"go-utils/cerrors"
-	"go-utils/couts"
-	"go-utils/logger"
 	"log"
 	"os"
+
+	"github.com/Happay-DevSecOps/go-utils/cerrors"
+	"github.com/Happay-DevSecOps/go-utils/couts"
+	"github.com/Happay-DevSecOps/go-utils/logger"
 )
 
 var (
