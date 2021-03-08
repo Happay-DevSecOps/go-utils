@@ -49,16 +49,16 @@ func main() {
 	// Check error type
 	if out, ok := out.(*cerrors.GeneralError); ok {
 		finalError := output + ": GeneralError - " + out.Error()
-		fmt.Println(finalError)
+		log.Println(finalError)
 	}
 	if out, ok := out.(*couts.GeneralOutput); ok {
 		finalOutput := output + ": GeneralOutput - " + fmt.Sprintf("%v", out)
-		fmt.Println(finalOutput)
+		log.Println(finalOutput)
 	}
 }
 ```
 Output - 
 ```
-Failed: GeneralError - Code: 500, Message: Unable to open file, Err: open test.txt: no such file or directory
-Success: GeneralOutput - Code: 200, Message: file opened successfully, Out: test.txt
+2021/03/08 13:47:59 Failed: GeneralError - Code: 500, Message: Unable to open file, Err: open test.txt: no such file or directory
+2021/03/08 13:47:60 Success: GeneralOutput - Code: 200, Message: file opened successfully, Out: test.txt
 ```

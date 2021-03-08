@@ -4,8 +4,18 @@ import (
 	"fmt"
 	"go-utils/cerrors"
 	"go-utils/couts"
+	"go-utils/logger"
+	"log"
 	"os"
 )
+
+var (
+	logInfo, logWarn, logError *log.Logger
+)
+
+func init() {
+	logInfo, logWarn, logError = logger.InitLogger()
+}
 
 var (
 	err error
@@ -29,11 +39,11 @@ func main() {
 	// Check error type
 	if out, ok := out.(*cerrors.GeneralError); ok {
 		finalError := output + ": GeneralError - " + out.Error()
-		fmt.Println(finalError)
+		logError.Println(finalError)
 	}
 
 	if out, ok := out.(*couts.GeneralOutput); ok {
 		finalOutput := output + ": GeneralOutput - " + fmt.Sprintf("%v", out)
-		fmt.Println(finalOutput)
+		logInfo.Println(finalOutput)
 	}
 }
