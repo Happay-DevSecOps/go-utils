@@ -3,25 +3,37 @@ package main
 import (
 	"fmt"
 	"go-utils/cerrors"
+	"go-utils/couts"
 	"os"
 )
 
+var (
+	err error
+)
+
 // Sample snippet to use Custom Error
-func openFile() (output string, err error) {
+func openFile() (Output string, out interface{}) {
 	var file *os.File
 	if file, err = os.Open("test.txt"); err != nil {
-		return "Failed", &cerrors.GeneralError{Code: "123", Message: "Unable to open file", Err: err}
+		generalError := &cerrors.GeneralError{Code: "500", Message: "Unable to open file", Err: err}
+		return "Failed", generalError
 	}
-	fmt.Println(file.Name())
-	return "Sucess", nil
+
+	generalOutput := &couts.GeneralOutput{Code: "200", Message: "File opened successfully", Out: file.Name()}
+
+	return "Sucess", generalOutput
 }
 
 func main() {
-	a, err := openFile()
+	output, out := openFile()
 	// Check error type
-	if _, ok := err.(*cerrors.GeneralError); ok {
-		fmt.Println("GeneralError - ", err)
+	if out, ok := out.(*cerrors.GeneralError); ok {
+		finalError := output + ": GeneralError - " + out.Error()
+		fmt.Println(finalError)
 	}
-	fmt.Println(a)
-	fmt.Println(err)
+
+	if out, ok := out.(*couts.GeneralOutput); ok {
+		finalOutput := output + ": GeneralOutput - " + fmt.Sprintf("%v", out)
+		fmt.Println(finalOutput)
+	}
 }

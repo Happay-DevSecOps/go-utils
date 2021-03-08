@@ -2,7 +2,7 @@ package cerrors
 
 import "fmt"
 
-// GeneralError struct
+// GeneralError struct (500-510)
 type GeneralError struct {
 	Code    string
 	Message string
@@ -10,5 +10,5 @@ type GeneralError struct {
 }
 
 func (c *GeneralError) Error() string {
-	return fmt.Sprintf("Code: %s, Message: %s, Error: %s", c.Code, c.Message, c.Err)
+	return fmt.Sprintf("Code: %s, Message: %s, Err: %s", c.Code, c.Message, c.Err)
 }
