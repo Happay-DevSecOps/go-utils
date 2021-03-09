@@ -37,7 +37,7 @@ func openFile() (Output string, out interface{}) {
 
 func main() {
 	output, out := openFile()
-	// Check error type
+	// Check error types
 	if out, ok := out.(*cerrors.GeneralError); ok {
 		finalError := output + ": GeneralError - " + out.Error()
 		logError.Println(finalError)
