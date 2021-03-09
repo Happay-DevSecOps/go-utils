@@ -8,6 +8,7 @@ import (
 	"github.com/Happay-DevSecOps/go-utils/cerrors"
 	"github.com/Happay-DevSecOps/go-utils/couts"
 	"github.com/Happay-DevSecOps/go-utils/logger"
+	strutils "github.com/torden/go-strutil"
 )
 
 var (
@@ -47,4 +48,9 @@ func main() {
 		finalOutput := output + ": GeneralOutput - " + fmt.Sprintf("%v", out)
 		logInfo.Println(finalOutput)
 	}
+
+	// Snippet to ensure go.sum is generated
+	strutil := strutils.NewStringProc()
+	examplestr1 := "abc<br>defgh"
+	fmt.Println(strutil.Br2Nl(examplestr1))
 }
