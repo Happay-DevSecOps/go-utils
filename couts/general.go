@@ -6,7 +6,7 @@ import "fmt"
 type GeneralOutput struct {
 	Code    string
 	Message string
-	Out     string
+	Out     interface{}
 }
 
 //Outp method
