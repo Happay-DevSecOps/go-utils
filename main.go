@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/Happay-DevSecOps/go-utils/cdate"
 	"github.com/Happay-DevSecOps/go-utils/cerrors"
 	"github.com/Happay-DevSecOps/go-utils/couts"
 	"github.com/Happay-DevSecOps/go-utils/logger"
@@ -53,4 +54,9 @@ func main() {
 	strutil := strutils.NewStringProc()
 	examplestr1 := "abc<br>defgh"
 	fmt.Println(strutil.Br2Nl(examplestr1))
+
+	var dateDetail cdate.GetDate
+	dateDetail = dateDetail.Ymdyesterday()
+
+	logInfo.Println(dateDetail)
 }
